@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container mt-3">
+        <h2>Quiz Questions</h2>
+
+        <!-- Add New Question Form -->
+        <button class="btn btn-primary mb-3" onclick="toggleForm()">Add New Question</button>
+        <form id="addForm" style="display: none;">
+            <div class="form-group">
+                <label for="question">Question:</label>
+                <input type="text" class="form-control" id="question" name="question">
+            </div>
+            <div class="form-group">
+                <label for="answer1">Answer 1:</label>
+                <input type="text" class="form-control" id="answer1" name="answer1">
+            </div>
+            <div class="form-group">
+                <label for="answer2">Answer 2:</label>
+                <input type="text" class="form-control" id="answer2" name="answer2">
+            </div>
+            <div class="form-group">
+                <label for="answer3">Answer 3:</label>
+                <input type="text" class="form-control" id="answer3" name="answer3">
+            </div>
+            <div class="form-group">
+                <label for="answer4">Answer 4:</label>
+                <input type="text" class="form-control" id="answer4" name="answer4">
+            </div>
+            <div class="form-group">
+                <label for="correct_answer">Correct Answer:</label>
+                <input type="text" class="form-control" id="correct_answer" name="correct_answer">
+            </div>
+            <button type="button" class="btn btn-success" onclick="addQuestion()">Add Question</button>
+        </form>
+
+        <!-- Quiz Questions Table -->
+        <div id="quizTable"></div>
+    </div>
+
+    <script>
+        // Function to toggle display of the add form
+        function toggleForm() {
+            $('#addForm').toggle();
+        }
+
+        // Function to add a new question
+        function addQuestion() {
+            var formData = $('#addForm').serialize(); // Serialize form data
+            $.ajax({
+                url: 'https://tshrih.000webhostapp.com/Admin/Test/add.php',
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    alert(response);
+                    fetchQuizData(); // Refresh quiz table
+                    $('#addForm').trigger('reset'); // Reset form fields
+                },
+                error: function() {
+                    alert('Error adding question.');
+                }
+            });
+        }
+
+        // Function to fetch quiz data and populate the table
+        function fetchQuizData() {
+            $.ajax({
+                url: 'https://tshrih.000webhostapp.com/Admin/Test/fetch.php',
+                type: 'GET',
+                success: function(response) {
+                    $('#quizTable').html(response);
+                },
+                error: function() {
+                    alert('Error fetching quiz data.');
+                }
+            });
+        }
+
+        // Function to delete a question
+        function deleteQuestion(id) {
+            if (confirm('Are you sure you want to delete this question?')) {
+                $.ajax({
+                    url: 'https://tshrih.000webhostapp.com/Admin/Test/delete.php',
+                    type: 'POST',
+                    data: { question_id: id },
+                    success: function(response) {
+                        alert(response);
+                        fetchQuizData(); // Refresh quiz table
+                    },
+                    error: function() {
+                        alert('Error deleting question.');
+                    }
+                });
+            }
+        }
+
+        // Initial fetch of quiz data
+        fetchQuizData();
+    </script>
+</body>
+</html>
