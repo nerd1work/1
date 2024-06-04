@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome</title>
+</head>
+<body>
+
+<div class="welcome-container">
+  <h2>Welcome, <span id="username"></span>!</h2>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<script>
+  var username = localStorage.getItem("username");
+  document.getElementById("username").textContent = username;
+
+  function logout() {
+    localStorage.removeItem("username");
+    window.location.href = "4.html";
+  }
+</script>
+
+</body>
+</html>
