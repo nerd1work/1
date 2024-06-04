@@ -1,26 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-a:link, a:visited {
-  background-color: #f44336;
-  color: white;
-  padding: 14px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Data Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
 
-a:hover, a:active {
-  background-color: red;
-}
-</style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-  <iframe src="https://dr-group.wuaze.com/home.php" title="description"></iframe>
-
-
+    <table id="jsonTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Subtitle</th>
+                <th>Pre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table body will be populated using JavaScript -->
+        </tbody>
+    </table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('1.json')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector('#jsonTable tbody');
+                    data[2].data.forEach(item => {
+                        const row = tableBody.insertRow();
+                        row.insertCell(0).textContent = item.id;
+                        row.insertCell(1).innerHTML = `<img src="${item.image}" alt="Image" style="max-width: 100px;">`;
+                        row.insertCell(2).textContent = item.title;
+                        row.insertCell(3).textContent = item.subtitle;
+                        row.insertCell(4).textContent = item.pre;
+                    });
+                })
+                .catch(error => console.error('Error fetching JSON: ', error));
+        });
+    </script>
 </body>
 </html>
-
-
