@@ -14,11 +14,15 @@
 
 <script>
   var username = localStorage.getItem("username");
+  if (!username) {
+    window.location.href = "4.html"; // إعادة توجيه المستخدم إلى صفحة تسجيل الدخول
+  }
+
   document.getElementById("username").textContent = username;
 
   function logout() {
     localStorage.removeItem("username");
-    window.location.href = "4.html";
+    window.location.href = "index.html";
   }
 </script>
 
