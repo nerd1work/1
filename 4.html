@@ -1,62 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON Data Table</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <table id="jsonTable">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Subtitle</th>
-                <th>Pre</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Table body will be populated using JavaScript -->
-        </tbody>
-    </table>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            fetch('1.json')
-                .then(response => response.json())
-                .then(data => {
-                    const tableBody = document.querySelector('#jsonTable tbody');
-                    data[2].data.forEach(item => {
-                        const row = tableBody.insertRow();
-                        row.insertCell(0).textContent = item.id;
-                        row.insertCell(1).innerHTML = `<img src="${item.image}" alt="Image" style="max-width: 100px;">`;
-                        row.insertCell(2).textContent = item.title;
-                        row.insertCell(3).textContent = item.subtitle;
-                        row.insertCell(4).textContent = item.pre;
-                    });
-                })
-                .catch(error => console.error('Error fetching JSON: ', error));
-        });
-    </script>
+
+<div class="login-container">
+  <h2>Login</h2>
+  <form id="login-form">
+    <div class="input-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+    </div>
+    <div class="input-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <button type="submit">Login</button>
+  </form>
+  <p id="error-message" class="error"></p>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
