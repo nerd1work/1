@@ -4,39 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Login</h2>
-    <form id="loginForm">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br><br>
-        <button type="submit">Login</button>
-    </form>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button type="submit">Login</button>
+        </form>
+        <p id="message"></p>
+    </div>
 
-    <script>
-        document.getElementById("loginForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-
-            // Check login credentials against stored data (in this case, a JSON file)
-            fetch('users.json')
-            .then(response => response.json())
-            .then(data => {
-                const user = data.find(user => user.username === username && user.password === password);
-                if(user) {
-                    // Save username to localStorage
-                    localStorage.setItem('username', username);
-                    // Redirect to go.html
-                    window.location.href = 'go.html';
-                } else {
-                    alert('Invalid username or password!');
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
