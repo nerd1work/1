@@ -19,3 +19,17 @@ document.getElementById("login-form").addEventListener("submit", function(event)
     })
     .catch(error => console.error("حدث خطأ: ", error));
 });
+
+// في go.html
+document.addEventListener("DOMContentLoaded", function() {
+  var username = localStorage.getItem("username");
+  if (!username) {
+    window.location.href = "4.html"; // إعادة توجيه المستخدم إلى صفحة تسجيل الدخول
+  }
+  document.getElementById("username").textContent = username;
+});
+
+function logout() {
+  localStorage.removeItem("username");
+  window.location.href = "4.html";
+}
