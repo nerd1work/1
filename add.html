@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="add-user-container">
+        <h2>Add User</h2>
+        <form id="addUserForm">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button type="submit">Add User</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script>
+      document.getElementById("addUserForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("message").innerText = "User added successfully!";
+            // Optionally, you can redirect the user or perform any other action here
+        }
+    };
+    xhttp.open("POST", "add_user.php", true); // Replace "add_user.php" with the endpoint to handle user addition
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify({ "username": username, "password": password }));
+});
+    </script>
+</body>
+</html>
