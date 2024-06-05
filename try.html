@@ -26,7 +26,7 @@ function addData() {
     };
 
     // قراءة البيانات الحالية من ملف JSON
-    fetch('data.json')
+    fetch('https://nerd1work.github.io/1/data.json')
     .then(response => response.json())
     .then(data => {
         // إضافة البيانات الجديدة إلى المصفوفة
@@ -43,7 +43,7 @@ function addData() {
 
 function saveJSON(jsonData) {
     // إرسال البيانات المحدثة إلى ملف JSON
-    fetch('data.json', {
+    fetch('https://nerd1work.github.io/1/data.json', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
