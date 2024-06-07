@@ -1,8 +1,4 @@
 [
-{"type":"header","version":"4.9.0.1","comment":"Export to JSON plugin for PHPMyAdmin"},
-{"type":"database","name":"if0_36466624_A"},
-{"type":"table","name":"users","database":"if0_36466624_A","data":
-[
 {"id":"1","name":"أيهم رياض حمشدو","student_id":"212216","created_at":"2024-06-06 13:43:03","ip_address":"65.49.68.191"},
 {"id":"2","name":"آية أحمد رامي حجبو","student_id":"212142","created_at":"2024-06-06 13:56:31","ip_address":"46.58.221.141"},
 {"id":"3","name":"شهد رياض الجاسم ","student_id":"212219","created_at":"2024-06-06 13:56:35","ip_address":"46.57.250.91"},
@@ -67,6 +63,6 @@
 {"id":"63","name":"محمد فيصل سليمان ","student_id":"212225","created_at":"2024-06-07 07:34:48","ip_address":"188.139.244.253"},
 {"id":"64","name":"مريم جاسم الرمضان ","student_id":"212105","created_at":"2024-06-07 07:36:10","ip_address":"5.0.13.35"},
 {"id":"65","name":"نزير هاتي سليمان ","student_id":"212239","created_at":"2024-06-07 07:37:38","ip_address":"188.139.244.253"}
-]
-}
+
+
 ]
