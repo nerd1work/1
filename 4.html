@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iOS-Style Notification</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+}
+
+.ios-notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f2f2f2;
+  border: 1px solid #000; /* تغيير لون الحواف إلى الأسود */
+  border-radius: 8px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none; /* إخفاء الإشعار بشكل افتراضي */
+  width: 80vw; /* توسيع العرض ليناسب عرض الشاشة */
+}
+
+.ios-notification #notificationText {
+  color: #333;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<button id="showNotification">تم</button> <!-- زر الإظهار -->
+
+<div id="notification" class="ios-notification">
+  <span id="notificationText">No internet connection</span>
+</div>
+
+<script>
+document.getElementById("showNotification").addEventListener("click", function() {
+  var notification = document.getElementById("notification");
+  notification.style.display = "block"; // عرض الإشعار
+
+  setTimeout(function() {
+    notification.style.display = "none"; // إخفاء الإشعار بعد 5 ثواني
+  }, 5000);
+});
+</script>
+
+</body>
+</html>
