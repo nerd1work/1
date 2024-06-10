@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,12 +15,13 @@ body {
   left: 50%;
   transform: translateX(-50%);
   background-color: #f2f2f2;
-  border: 1px solid #000; /* تغيير لون الحواف إلى الأسود */
+  border: 1px solid #ff0000; /* تغيير لون الحواف إلى الأحمر */
   border-radius: 8px;
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: none; /* إخفاء الإشعار بشكل افتراضي */
   width: 80vw; /* توسيع العرض ليناسب عرض الشاشة */
+  text-align: right; /* توجيه النص لليمين */
 }
 
 .ios-notification #notificationText {
@@ -34,7 +35,7 @@ body {
 <button id="showNotification">تم</button> <!-- زر الإظهار -->
 
 <div id="notification" class="ios-notification">
-  <span id="notificationText">No internet connection</span>
+  <span id="notificationText">لا يوجد اتصال بالإنترنت</span>
 </div>
 
 <script>
