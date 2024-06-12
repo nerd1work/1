@@ -3,91 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blocked User Page</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+  <title>SweetAlert2 Example</title>
+  <!-- Link to SweetAlert2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10"></link>
+  <style>
+    /* تحديد عرض التنبيه */
+    .swal2-popup {
+      max-width: 90%; /* تقليل عرض التنبيه ليكون أقل من عرض الشاشة */
+    }
+
+    /* تحديد ارتفاع التنبيه */
+    .swal2-popup .swal2-content {
+      max-height: 70px; /* تقليل ارتفاع التنبيه */
+    }
+  </style>
 </head>
 <body>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Button to trigger the alert -->
+  <button id="showToastButton">Show Toast</button>
 
-<script>
-  // يتم استدعاء هذه الدالة عند فتح الصفحة
-  window.onload = function() {
-    // عرض رسالة للمستخدم تفيده بأنه محظور
-    Swal.fire({
-      title: 'تم حظر المستخدم',
-      text: 'الرجاء إدخال الرسالة للتواصل مع الإدارة',
-      icon: 'warning',
-      input: 'text',
-      inputPlaceholder: 'اكتب رسالتك هنا...',
-      confirmButtonText: 'تأكيد',
-      showLoaderOnConfirm: true,
-      showCancelButton: true,
-      cancelButtonText: 'إلغاء',
-      cancelButtonColor: '#dc3545',
-      allowOutsideClick: false, // منع الإغلاق عند النقر خارج الرسالة
-      preConfirm: (message) => {
-        if (!message) {
-          Swal.showValidationMessage(
-            'يرجى إدخال رسالة قبل الاستمرار!'
-          )
-        }
-      }
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // عرض رسالة للتأكيد بعد إدخال الرسالة
-        Swal.fire({
-          title: 'تأكيد الإرسال',
-          text: 'هل أنت متأكد أنك تريد إرسال هذه الرسالة؟',
-          icon: 'question',
-          confirmButtonText: 'نعم، إرسال',
-          cancelButtonText: 'إعادة الإدخال',
-          showCancelButton: true,
-          cancelButtonColor: '#dc3545',
-          cancelButtonAriaLabel: 'إعادة الإدخال',
-          cancelButtonEvent: () => {
-            // إعادة فتح الرسالة لإعادة الإدخال
-            window.onload();
-          },
-          allowOutsideClick: false, // منع الإغلاق عند النقر خارج الرسالة
-          showLoaderOnConfirm: true,
-          showCloseButton: false, // منع ظهور زر الإغلاق
-          preConfirm: () => {
-            // قم بإرسال الرسالة
-            return new Promise((resolve) => {
-              setTimeout(() => {
-                resolve();
-              }, 2000);
-            });
-          }
-        }).then((result) => {
-          if (result.isConfirmed) {
-            // عرض رسالة نجاح العملية بعد تأكيد الرسالة
-            Swal.fire(
-              'نجاح العملية',
-              'تم إرسال الرسالة بنجاح.',
-              'success'
-            ).then(() => {
-              // عرض رسالة المستخدم محظور بعد اكتمال الرسالة
-              Swal.fire({
-                title: 'المستخدم محظور',
-                text: 'لقد تم حظر هذا المستخدم من النظام.',
-                icon: 'error',
-                showConfirmButton: false
-              });
-            });
-          } else {
-            // إعادة فتح الرسالة لإعادة الإدخال
-            window.onload();
-          }
-        });
-      } else {
-        // إعادة فتح الرسالة لإعادة الإدخال
-        window.onload();
+  <!-- Link to SweetAlert2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script>
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "bottom", // وضع التنبيه منتصف الشاشة من الأسفل
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
       }
     });
-  }
-</script>
 
+    document.getElementById('showToastButton').addEventListener('click', function() {
+      Toast.fire({
+        icon: "success",
+        title: "Signed in successfully"
+      });
+    });
+  </script>
 </body>
 </html>
