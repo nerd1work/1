@@ -1,0 +1,20 @@
+{
+    "users": [
+        {
+            "username": "admin",
+            "password": "admin123",
+            "admin": "true",
+            "course": "",
+            "fullname": "Admin User",
+            "phone": "1234567890"
+        },
+        {
+            "username": "student1",
+            "password": "pass123",
+            "admin": "false",
+            "course": "dentistry",
+            "fullname": "Student One",
+            "phone": "0987654321"
+        }
+    ]
+}
