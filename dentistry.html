@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Dentistry Student</title>
+  <!-- SweetAlert2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <!-- Custom CSS for iOS design -->
+  <style>
+  	@import url("https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap");
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+:root {
+  --c-white: #fff;
+  --c-black: #000;
+  --c-ash: #eaeef6;
+  --c-charcoal: #a0a0a0;
+  --c-void: #141b22;
+  --c-fair-pink: #FFEDEC;
+  --c-apricot: #FBC8BE;
+  --c-coffee: #754D42;
+  --c-del-rio: #917072;
+  --c-java: #1FCAC5;
+  --c-titan-white: #f1eeff;
+  --c-cold-purple: #a69fd6;
+  --c-indigo: #6558d3;
+  --c-governor: #4133B7;
+}
+
+body {
+  font-family: "Spline Sans", sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  background-color: var(--c-ash);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  width: 90%;
+  max-width: 1000px;
+  margin: 10vh auto;
+}
+
+.card {
+  border-radius: 16px;
+  box-shadow: 0 30px 30px -25px rgba(65, 51, 183, 0.25);
+  max-width: 300px;
+}
+
+.information {
+  background-color: var(--c-white);
+  padding: 1.5rem;
+}
+.information .tag {
+  display: inline-block;
+  background-color: var(--c-titan-white);
+  color: var(--c-indigo);
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.5em 0.75em;
+  line-height: 1;
+  border-radius: 6px;
+}
+.information .tag + * {
+  margin-top: 1rem;
+}
+.information .title {
+  font-size: 1.5rem;
+  color: var(--c-void);
+  line-height: 1.25;
+}
+.information .title + * {
+  margin-top: 1rem;
+}
+.information .info {
+  color: var(--c-charcoal);
+}
+.information .info + * {
+  margin-top: 1.25rem;
+}
+.information .button {
+  font: inherit;
+  line-height: 1;
+  background-color: var(--c-white);
+  border: 2px solid var(--c-indigo);
+  color: var(--c-indigo);
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.information .button:hover, .information .button:focus {
+  background-color: var(--c-indigo);
+  color: var(--c-white);
+}
+.information .details {
+  display: flex;
+  gap: 1rem;
+}
+.information .details div {
+  padding: 0.75em 1em;
+  background-color: var(--c-titan-white);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.125em;
+  flex-basis: 50%;
+}
+.information .details dt {
+  font-size: 0.875rem;
+  color: var(--c-cold-purple);
+}
+.information .details dd {
+  color: var(--c-indigo);
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.plan {
+  padding: 10px;
+  background-color: var(--c-white);
+  color: var(--c-del-rio);
+}
+.plan strong {
+  font-weight: 600;
+  color: var(--c-coffee);
+}
+.plan .inner {
+  padding: 20px;
+  padding-top: 40px;
+  background-color: var(--c-fair-pink);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.plan .pricing {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--c-apricot);
+  border-radius: 99em 0 0 99em;
+  display: flex;
+  align-items: center;
+  padding: 0.625em 0.75em;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--c-coffee);
+}
+.plan .pricing small {
+  color: var(--c-del-rio);
+  font-size: 0.75em;
+  margin-left: 0.25em;
+}
+.plan .title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--c-coffee);
+}
+.plan .title + * {
+  margin-top: 0.75rem;
+}
+.plan .info + * {
+  margin-top: 1rem;
+}
+.plan .features {
+  display: flex;
+  flex-direction: column;
+}
+.plan .features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.plan .features li + * {
+  margin-top: 0.75rem;
+}
+.plan .features .icon {
+  background-color: var(--c-java);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-white);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+.plan .features .icon svg {
+  width: 14px;
+  height: 14px;
+}
+.plan .features + * {
+  margin-top: 1.25rem;
+}
+.plan button {
+  font: inherit;
+  background-color: var(--c-indigo);
+  border-radius: 6px;
+  color: var(--c-white);
+  font-weight: 500;
+  font-size: 1.125rem;
+  width: 100%;
+  border: 0;
+  padding: 1em;
+}
+.plan button:hover, .plan button:focus {
+  background-color: var(--c-governor);
+}
+    .swal2-popup {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 16px;
+      border-radius: 10px;
+      background-color: #f3f3f3;
+      color: #000;
+      width: 80%; /* Adjust width as needed */
+    }
+    .swal2-title {
+      font-weight: bold;
+      font-size: 20px;
+      color: #007aff; /* Blue color for title */
+    }
+    .swal2-content {
+      font-size: 16px;
+      color: #333;
+    }
+    .swal2-actions {
+      display: flex;
+      flex-direction: column; /* Display actions in column */
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .swal2-cancel {
+      background-color: #e5e5ea;
+      color: #333;
+      padding: 10px 20px;
+      border-radius: 8px;
+      width: 100%; /* Make cancel button full width */
+    }
+    .swal2-confirm {
+      background-color: #007aff;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      width: 100%; /* Make confirm button full width */
+    }
+  </style>
+</head>
+<body>
+	  <h2>Welcome Dentistry Student</h2>
+  <div class="cards">
+    <!-- Card for p1 -->
+    <article class="information card" id="p1Card">
+      <span class="tag">نشط</span>
+      <h2 class="title">لا تفوت اجتماعاتك الهامة أبدًا</h2>
+      <p class="info">يتتبع "إليمناتاري" جميع الأحداث لليوم كما جدولتها، فلن تضطر أبدًا للقلق.</p>
+      <button class="button" onclick="showMessage('p1')">
+        <span>معرفة المزيد</span>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="none">
+          <path d="M0 0h24v24H0V0z" fill="none"/>
+          <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z" fill="currentColor"/>
+        </svg>
+      </button>
+    </article>
+    
+    <!-- Card for p2 -->
+    <article class="information card" id="p2Card">
+      <span class="tag">نشط</span>
+      <h2 class="title">لا تفوت اجتماعاتك الهامة أبدًا</h2>
+      <p class="info">يتتبع "إليمناتاري" جميع الأحداث لليوم كما جدولتها، فلن تضطر أبدًا للقلق.</p>
+      <button class="button" onclick="showMessage('p2')">
+        <span>معرفة المزيد</span>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="none">
+          <path d="M0 0h24v24H0V0z" fill="none"/>
+          <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z" fill="currentColor"/>
+        </svg>
+      </button>
+    </article>
+    
+    <!-- Card for p3 -->
+    <article class="information card" id="p3Card">
+      <span class="tag">نشط</span>
+      <h2 class="title">لا تفوت اجتماعاتك الهامة أبدًا</h2>
+      <p class="info">يتتبع "إليمناتاري" جميع الأحداث لليوم كما جدولتها، فلن تضطر أبدًا للقلق.</p>
+      <button class="button" onclick="showMessage('p3')">
+        <span>معرفة المزيد</span>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="none">
+          <path d="M0 0h24v24H0V0z" fill="none"/>
+          <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z" fill="currentColor"/>
+        </svg>
+      </button>
+    </article>
+  </div>
+
+  <!-- SweetAlert2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Custom JavaScript -->
+  <script>
+    // Check if user is logged in and userData has p1, p2, p3 values
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    
+    // Function to show message based on parameter
+    function showMessage(param) {
+      if (userData && userData[param] === true) {
+        let messageTitle = `Message for ${param}`;
+        let messageText = `This is the message for ${param}.`;
+
+        Swal.fire({
+          title: messageTitle,
+          text: messageText,
+          icon: 'info',
+          showConfirmButton: false,
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          showCloseButton: false,
+          showCancelButton: true,
+          showDenyButton: false,
+          willClose: () => {
+            // Redirect to index.html after closing the alert
+            window.location.href = '';
+          }
+        });
+      } else {
+        // Optionally handle case where userData[param] is not true
+        console.log(`${param} is not true for the user.`);
+      }
+    }
+
+    // Function to show or hide cards based on userData
+    function updateCardsVisibility() {
+      if (userData) {
+        document.getElementById('p1Card').style.display = userData.p1 === true ? 'block' : 'none';
+        document.getElementById('p2Card').style.display = userData.p2 === true ? 'block' : 'none';
+        document.getElementById('p3Card').style.display = userData.p3 === true ? 'block' : 'none';
+      }
+    }
+
+    // Call updateCardsVisibility initially
+    updateCardsVisibility();
+  </script>
+</body>
+</html>
