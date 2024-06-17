@@ -1,0 +1,31 @@
+[
+  {
+    "username": "admin",
+    "password": "admin123",
+    "isAdmin": true,
+    "fullname": "Admin User",
+    "phone": "1234567890",
+    "course": "dentistry"
+  },
+  {
+    "username": "user1",
+    "password": "password123",
+    "isAdmin": false,
+    "fullname": "John Doe",
+    "phone": "9876543210",
+    "course": "dentistry",
+    "p1": true,
+    "p2": true,
+    "p3": true,
+    "block": false
+  },
+  {
+    "username": "user2",
+    "password": "userpass",
+    "isAdmin": false,
+    "fullname": "Jane Smith",
+    "phone": "5555555555",
+    "course": "dentistry",
+    "block": true
+  }
+]
