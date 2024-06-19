@@ -15,8 +15,8 @@
     "phone": "9876543210",
     "course": "dentistry",
     "p1": true,
-    "p2": true,
-    "p3": true,
+    "p2": false,
+    "p3": false,
     "p4": true,
     "block": false
   },
