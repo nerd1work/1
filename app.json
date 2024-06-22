@@ -8,13 +8,13 @@
     "course": "dentistry"
   },
   {
-    "username": "user1",
-    "password": "password123",
+    "username": "123",
+    "password": "123",
     "isAdmin": false,
     "fullname": "John Doe",
     "phone": "9876543210",
     "course": "dentistry",
-    "p1": false,
+    "p1": true,
     "p2": false,
     "p3": false,
     "p4": true,
