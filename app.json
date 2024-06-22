@@ -18,7 +18,7 @@
     "college": "كلية طب الأسنان",
     "location": "سوريا, طرطوس, بانياس",
    
-    "p1": false,
+    "p1": true,
     "p2": true,
     "p3": true,
     "p4": true,
@@ -36,7 +36,7 @@
     "location": "سوريا, لادقية, كورنيش",
    
     "p1": false,
-    "p2": true,
+    "p2": false,
     "p3": true,
     "p4": true,
     "block": false
