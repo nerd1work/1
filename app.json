@@ -18,7 +18,7 @@
     "p2": false,
     "p3": false,
     "p4": true,
-    "block": false
+    "block": true
   },
   {
     "username": "user2",
@@ -27,6 +27,10 @@
     "fullname": "Jane Smith",
     "phone": "5555555555",
     "course": "dentistry",
-    "block": true
+    "p1": true,
+    "p2": true,
+    "p3": false,
+    "p4": true,
+    "block": false
   }
 ]
