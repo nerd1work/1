@@ -18,6 +18,10 @@
     "p2card": false,
     "p3card": true,
     "p4card": true,
+    "p1": true,
+    "p2": false,
+    "p3": true,
+    "p4": true,
     "block": false
   },
   {
