@@ -10,7 +10,7 @@
   {
     "username": "123",
     "password": "123",
-    "isAdmin": false,
+    "isAdmin": true,
     "name": "أيهم رياض حمشدو",
     "phone": "0941545453",
     "course": "dentistry",
