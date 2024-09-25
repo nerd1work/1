@@ -157,13 +157,18 @@
 
 
   }
+  .button i {
+            margin-left: 8px; /* Push icon to the right */
+            user-select: none;
+  }
 </style>
 </head>
 <body>
   <div class="app-bar">
     <span id="page-title" class="page-title"> </span>
     <button class="menu-toggle" id="menuButton" onclick="toggleMenu()">
-      <img id="menuIcon" src="menu.png" alt="Menu Icon" />
+ <!----     <img id="menuIcon" src="menu.png" alt="Menu Icon" /> ---->
+      <i class="fa fa-calendar" aria-hidden="true"></i>
   </button>
   
   <script>
