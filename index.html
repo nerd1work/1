@@ -1,90 +1,20 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة الدخول</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .swal2-popup {
-            font-size: 1.2rem;
-            border-radius: 10px; /* إضافة زوايا دائرية */
-        }
-        .swal2-confirm {
-            background-color: #9b59b6 !important; /* بنفسجي فاتح */
-            color: white !important;
-            border: none;
-            padding: 12px 25px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .swal2-confirm:hover {
-            background-color: #8e44ad; /* تدرج داكن عند التحويم */
-        }
-        .swal2-cancel {
-            background-color: white !important;
-            color: #9b59b6 !important; /* بنفسجي فاتح */
-            border: 2px solid #9b59b6 !important;
-            padding: 12px 25px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .swal2-cancel:hover {
-            background-color: #9b59b6; /* تدرج داكن عند التحويم */
-            color: white !important; /* تغيير لون النص عند التحويم */
-        }
-        .swal2-input {
-            margin-top: 20px;
-        }
-    </style>
+    <title>Embed Form</title>
 </head>
 <body>
-    <script>
-        function showLogin() {
-            Swal.fire({
-                title: 'أدخل كلمة المرور',
-                input: 'password',
-                inputPlaceholder: 'كلمة المرور',
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                showCancelButton: true,
-                confirmButtonText: 'دخول',
-                cancelButtonText: 'طلب كود',
-                buttonsStyling: false,
-                customClass: {
-                    confirmButton: 'swal2-confirm',
-                    cancelButton: 'swal2-cancel'
-                },
-                preConfirm: (password) => {
-                    return new Promise((resolve, reject) => {
-                        if (password === 'mypassword') {
-                            resolve();
-                        } else {
-                            Swal.showValidationMessage('كلمة المرور خاطئة، حاول مرة أخرى');
-                        }
-                    });
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = 'index1.html';
-                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    window.location.href = 'https://wa.me/yourWhatsAppNumber'; // تغيير الرقم إلى رقمك
-                }
-            });
-        }
+    <!-- Form Container -->
+    <div formsappId="673edd2d74ea23f8d74c739a"></div>
 
-        // عرض النافذة عند تحميل الصفحة
-        window.onload = showLogin;
+    <!-- Embed Script -->
+    <script src="https://forms.app/static/embed.js" 
+            type="text/javascript" 
+            async 
+            defer 
+            onload="new formsapp('673edd2d74ea23f8d74c739a', 'fullscreen', {'opacity':0}, 'https://chj56kng.forms.app');">
     </script>
 </body>
 </html>
