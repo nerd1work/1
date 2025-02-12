@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج إدخال البيانات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', Arial, sans-serif;
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            background: rgba(255, 255, 255, 0.3);
+            border-left: 5px solid #27ae60;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background: #2ecc71;
+            transform: scale(1.05);
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 12px;
+            }
+
+            input, select, textarea {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+   <form id="dataForm" onsubmit="submitForm(event)">
+
+        <!-- الصفحة الأولى -->
+        <div id="step1" class="step active">
+            <h2>الخطوة الأولى: إدخال المعلومات الأساسية</h2>
+
+            <label for="fullName">الاسم الثلاثي:</label>
+            <input type="text" id="fullName" name="entry.1882529103" required>
+
+            <label for="nationalId">رقم الطالب:</label>
+            <input type="text" id="nationalId" name="entry.1216100525" required>
+
+            <label for="names">اختيار الأسماء:</label>
+            <select id="names" name="names" multiple required>
+                <option value="د. عبد الكريم خليل" data-entry="702959372">د. عبد الكريم خليل</option>
+                <option value="د. مروى خليل" data-entry="137345684">د. مروى خليل</option>
+                <option value="د. علي معروف" data-entry="1467540021">د. علي معروف</option>
+                <option value="د. تهامة يوسف" data-entry="900816040">د. تهامة يوسف</option>
+            </select>
+
+            <button type="button" onclick="nextStep()">التالي</button>
+        </div>
+
+        <!-- الصفحة الثانية -->
+        <div id="step2" class="step">
+            <h2>الخطوة الثانية: إدخال النصوص للأسماء المختارة</h2>
+            <div id="textEntries"></div>
+
+            <button type="button" onclick="prevStep()">السابق</button>
+            <button type="submit">إرسال</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    let stepIndex = 1;
+
+    function nextStep() {
+        if (stepIndex < 2) {
+            document.getElementById(`step${stepIndex}`).classList.remove('active');
+            stepIndex++;
+            document.getElementById(`step${stepIndex}`).classList.add('active');
+        }
+        
+        if (stepIndex === 2) {
+            const selectedOptions = Array.from(document.getElementById('names').selectedOptions);
+            const textEntriesDiv = document.getElementById('textEntries');
+            textEntriesDiv.innerHTML = '';
+
+            selectedOptions.forEach(option => {
+                const name = option.value;
+                const entryId = option.getAttribute("data-entry");
+
+                const label = document.createElement('label');
+                label.innerText = `أدخل ملاحظاتك حول ${name}:`;
+
+                const textarea = document.createElement('textarea');
+                textarea.name = `entry.${entryId}`;
+                textarea.required = true;
+
+                textEntriesDiv.appendChild(label);
+                textEntriesDiv.appendChild(textarea);
+            });
+        }
+    }
+
+    function prevStep() {
+        if (stepIndex > 1) {
+            document.getElementById(`step${stepIndex}`).classList.remove('active');
+            stepIndex--;
+            document.getElementById(`step${stepIndex}`).classList.add('active');
+        }
+    }
+
+    function submitForm(event) {
+        event.preventDefault();
+
+        const form = document.getElementById("dataForm");
+        const formData = new FormData(form);
+        
+        const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSc5241c1g9-E2MArMBcLpbixLRMCKnyz9eW-SZHbMsPA1sQ4A/formResponse";
+        
+        const formEntries = new URLSearchParams();
+        formData.forEach((value, key) => {
+            formEntries.append(key, value);
+        });
+
+        fetch(googleFormUrl, {
+            method: 'POST',
+            body: formEntries,
+        })
+        .then(response => {
+            alert('تم إرسال البيانات بنجاح!');
+        })
+        .catch(error => {
+            alert('حدث خطأ أثناء إرسال البيانات.');
+            console.error('Error:', error);
+        });
+    }
+</script>
+
+</body>
+</html>
