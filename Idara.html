@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج إدخال البيانات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+
+.footer {
+    text-align: center; /* لتوسيط النص */
+    font-family: Arial, sans-serif; /* خط النص */
+    color: #333; /* لون النص العام */
+    padding: 20px; /* إضافة مساحة حول المحتوى */
+     /* لون خلفية الفوتر */
+}
+
+.footer a {
+    text-decoration: none; /* إزالة الخط التحتي من الرابط */
+    color: #27ae60; /* لون أخضر فاتح للنص */
+    font-weight: bold; /* جعل النص عريض */
+}
+
+.footer a:hover {
+    color: #228B22; /* تغيير اللون عند تمرير الماوس فوق الرابط */
+}
+        body {
+            font-family: 'Tajawal', Arial, sans-serif;
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            background: rgba(255, 255, 255, 0.3);
+            border-left: 5px solid #27ae60;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background: #2ecc71;
+            transform: scale(1.05);
+        }
+
+        button:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+   <form id="dataForm" onsubmit="submitForm(event)">
+
+        <!-- الخطوة الأولى -->
+        <div id="step1" class="step active">
+            <h2>الخطوة الأولى: إدخال المعلومات الأساسية</h2>
+
+            <label for="fullName">الاسم الثلاثي:</label>
+            <input type="text" id="fullName" name="entry.1882529103" required>
+
+            <label for="nationalId">رقم الطالب:</label>
+            <input type="text" id="nationalId" name="entry.1216100525" required>
+
+            <label for="names">اختيار الأسماء:</label>
+            <select id="names" name="names" multiple required>
+               <option value="د. حسين ابراهيم" data-entry="109389468">د. حسين ابراهيم</option>
+<option value="د. علي ابراهيم" data-entry="1329756110">د. علي ابراهيم</option>
+<option value="د. رشا حمدوش" data-entry="731668212">د. رشا حمدوش</option>
+<option value="د. رامي زيدان" data-entry="830973881">د. رامي زيدان</option>
+<option value="د. مالك حسن" data-entry="1844350725">د. مالك حسن</option>
+<option value="د. آصف حيدر" data-entry="1334214701">د. آصف حيدر</option>
+<option value="د. عماد سليمان" data-entry="108938442">د. عماد سليمان</option>
+<option value="د. احمد سلمان" data-entry="224519705">د. احمد سلمان</option>
+<option value="د. عايدة حبيب" data-entry="1141131273">د. عايدة حبيب</option>
+<option value="د. فاطمة عبد الحميد" data-entry="349153531">د. فاطمة عبد الحميد</option>
+<option value="د. غسان علي" data-entry="939141035">د. غسان علي</option>
+<option value="د. محمود شعبان" data-entry="898779078">د. محمود شعبان</option>
+<option value="د. أيمن شيحا" data-entry="1230454455">د. أيمن شيحا</option>
+<option value="د. وسيم بلال" data-entry="530319492">د. وسيم بلال</option>
+    </select>
+
+            <button type="button" onclick="nextStep()">التالي</button>
+        </div>
+
+        <!-- الخطوة الثانية -->
+        <div id="step2" class="step">
+            <h2>الخطوة الثانية: إدخال النصوص للأسماء المختارة</h2>
+            <div id="textEntries"></div>
+
+            <button type="button" onclick="prevStep()">السابق</button>
+            <button type="submit" id="submitButton">إرسال</button>
+        </div>
+    </form>
+<div class="footer">
+    Powered by  
+    <a href="https://wa.me/1234567890" target="_blank"><strong>Dr Ayham Hamchado</strong></a>
+</div>
+</div>
+
+<script>
+    let stepIndex = 1;
+
+    function nextStep() {
+        if (stepIndex < 2) {
+            document.getElementById(`step${stepIndex}`).classList.remove('active');
+            stepIndex++;
+            document.getElementById(`step${stepIndex}`).classList.add('active');
+        }
+
+        if (stepIndex === 2) {
+            const selectedOptions = Array.from(document.getElementById('names').selectedOptions);
+            const textEntriesDiv = document.getElementById('textEntries');
+            textEntriesDiv.innerHTML = '';
+
+            selectedOptions.forEach(option => {
+                const name = option.value;
+                const entryId = option.getAttribute("data-entry");
+
+                const label = document.createElement('label');
+                label.innerText = `أدخل ملاحظاتك حول ${name}:`;
+
+                const textarea = document.createElement('textarea');
+                textarea.name = `entry.${entryId}`;
+                textarea.required = true;
+
+                textEntriesDiv.appendChild(label);
+                textEntriesDiv.appendChild(textarea);
+            });
+        }
+    }
+
+    function prevStep() {
+        if (stepIndex > 1) {
+            document.getElementById(`step${stepIndex}`).classList.remove('active');
+            stepIndex--;
+            document.getElementById(`step${stepIndex}`).classList.add('active');
+        }
+    }
+
+    function submitForm(event) {
+        event.preventDefault();
+
+        const form = document.getElementById("dataForm");
+        const submitButton = document.getElementById("submitButton");
+        submitButton.disabled = true;
+
+        Swal.fire({
+            title: 'يتم الإرسال...',
+            text: 'يرجى الانتظار أثناء إرسال البيانات.',
+            icon: 'info',
+            allowOutsideClick: false,
+            showConfirmButton: false
+        });
+
+        const formData = new FormData(form);
+        const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLScG2jkut7OijN5txp1RuJ6RCB3uZvRBriK20PzSF6q1ASjJIw/formResponse";
+        
+        const formEntries = new URLSearchParams();
+        formData.forEach((value, key) => {
+            formEntries.append(key, value);
+        });
+
+        fetch(googleFormUrl, {
+            method: 'POST',
+            body: formEntries,
+        })
+        .finally(() => {
+            Swal.fire({
+                title: 'تم الإرسال!',
+                text: 'تم إرسال البيانات بنجاح.',
+                icon: 'success',
+                allowOutsideClick: false,
+                confirmButtonText: 'موافق'
+            }).then(() => {
+                resetForm();
+            });
+        });
+    }
+
+    function resetForm() {
+        document.getElementById("dataForm").reset();
+        stepIndex = 1;
+        document.getElementById("step2").classList.remove('active');
+        document.getElementById("step1").classList.add('active');
+        document.getElementById("submitButton").disabled = false;
+    }
+</script>
+
+</body>
+  </html>
